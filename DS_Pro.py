@@ -1,4 +1,3 @@
-# Let's go ahead and start with some imports
 import matplotlib
 import pandas as pd
 from pandas import Series, DataFrame
@@ -22,7 +21,6 @@ from datetime import datetime
 endtime = datetime.now()
 start = datetime(endtime.year - 1, endtime.month, endtime.day)
 
-# Fill your list here!
 my_stock_list = ['NVDA', 'JPM', 'CVX', 'DIS', 'AMZN']
 for stock in my_stock_list:
     globals()[stock] = web.get_data_yahoo(stock, start=start, end=endtime)
@@ -44,16 +42,16 @@ def get_visualization():
             textcoords='offset points', ha='right', va='bottom',
             arrowprops=dict(arrowstyle='-', connectionstyle='arc3,rad=0', color='blue'))
 
-# Set up our time horizon
+# Set up time horizon
 days = 100
 
-# Now our delta
+# delta
 dt = 1 / days
 
-# Now let's grab our mu (drift) from the expected return data we got for AAPL
+#grab our mu (drift) from the expected return data got for AAPL
 mu = rets.mean()['NVDA']
 
-# Now let's grab the volatility of the stock from the std() of the average return
+# grab the volatility of the stock from the std() of the average return
 sigma = rets.std()['NVDA']
 
 def risk_an_return():
@@ -93,7 +91,7 @@ def draw_monte_carlo():
 
     startprice = NVDA["Adj Close"][0]
 
-    # This is how many simulations we will be running
+    #how many simulations we will be running
     simulations = 100
 
     for run in range(simulations):
@@ -131,7 +129,7 @@ def get_final_risk(simulations,startprice):
     q = np.percentile(simulations, 5)
     sns.histplot(simulations, bins=200, kde=True)
 
-    # Using plt.figtext to fill in some additional information onto the plot
+    #some additional information
 
     # Starting Price
     plt.figtext(0.6, 0.8, s="Start price: $%.2f" % startprice)
