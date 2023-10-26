@@ -1,4 +1,4 @@
-#Let's go ahead and start with some imports
+
 import matplotlib
 import pandas as pd
 from pandas import Series,DataFrame
